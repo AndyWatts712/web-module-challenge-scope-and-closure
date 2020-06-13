@@ -18,6 +18,7 @@ function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
 
+console.log(processFirstItem(["Andy", "Watts"], (str) => str + str));
 // ⭐️ Example Challenge END ⭐️
 
 
@@ -38,7 +39,7 @@ function processFirstItem(stringList, callback) {
 function counterMaker() {
   let count = 0;
   return function counter() {
-   return count++;
+    return count++;
   }
 }
 
@@ -56,11 +57,10 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning() {
+  return Math.floor(Math.random() * 3);
 }
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -74,13 +74,22 @@ finalScore(inning, 9) might return:
   "Away": 5,
 }
 
-*/ 
+*/
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(innings, someNum) {
+  let score = {
+    home: 0,
+    away: 0,
+  }
+  for (let i = 0; i < 9; i++) {
+    score.home = score.home + inning();
+  }
+  for (let i = 0; i < 9; i++) {
+    score.away = score.away + inning();
+  }
+  return score;
 }
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
