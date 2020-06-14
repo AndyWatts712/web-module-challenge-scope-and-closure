@@ -81,10 +81,8 @@ function finalScore(innings, someNum) {
     home: 0,
     away: 0,
   }
-  for (let i = 0; i < 9; i++) {
+  for (let i = 1; i <= someNum; i++) {
     score.home = score.home + inning();
-  }
-  for (let i = 0; i < 9; i++) {
     score.away = score.away + inning();
   }
   return score;
@@ -112,8 +110,35 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+//#Source https://bit.ly/2neWfJ2 
+const toOrdinalSuffix = num => {
+  const int = parseInt(num),
+    digits = [int % 10, int % 100],
+    ordinals = ['st', 'nd', 'rd', 'th'],
+    oPattern = [1, 2, 3, 4],
+    tPattern = [11, 12, 13, 14, 15, 16, 17, 18, 19];
+  return oPattern.includes(digits[0]) && !tPattern.includes(digits[1])
+    ? int + ordinals[digits[0] - 1]
+    : int + ordinals[3];
+};
+
+function scoreboard(inning, someNum) {
+  let score = {
+    inning: 0,
+    home: 0,
+    away: 0,
+  }
+
+  for (let i = 1; i <= someNum; i++) {
+    score = {
+      inning: i,
+      home: score.home + inning(),
+      away: score.away + inning()
+    };
+    console.log(`${toOrdinalSuffix(score.inning)} inning: ${score.home} - ${score.away}`);
+  }
+  console.log(`Final score: ${score.home} - ${score.away}`);
 }
 
+scoreboard(inning, 9);
 
