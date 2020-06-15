@@ -42,6 +42,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+Closure is when a variable looks for a value in its envirnoment. Usually used with nested functions. Its the ability of a variable with in a nested function to still access its value even though the function has been destroyed.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +65,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+I don't think it's being used because newRoll has a new value each roll.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
-c. What is the lexical scope of `newRoll`? 
+You could change dansRoll to someone elses roll, but the number will still be random.
+
+c. What is the lexical scope of `newRoll`?
+The function it's in and everything above it.
 
 ### Task 2c - Exit Ticket
 
